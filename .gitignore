@@ -17,3 +17,6 @@ test-output/old/Default suite/
 test-output/old/Suite/
 
 test-output/
+
+.idea/
+.DS_Store

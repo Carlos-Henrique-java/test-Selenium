@@ -5,13 +5,16 @@
         <listener class-name="com.thiago.core.InvokedMethodListener"></listener>
     </listeners>
     <test name="SearchGoogle" parallel="methods" thread-count="6" >
-        <parameter name="browser" value="chrome"/>
+        <parameter name="browser" value="gridf"/>
         <classes>
             <class name="com.thiago.teste.GoogleSearchTest">
                 <methods>
                     <include name="google0" />
+                    <include name="google1" />
+                    <include name="google2" />
                 </methods>
             </class>
+           <!-- docker-compose up -d  --scale chrome=5-->
         </classes>
     </test>
 </suite>

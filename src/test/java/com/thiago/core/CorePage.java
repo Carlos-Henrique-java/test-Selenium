@@ -2,6 +2,7 @@ package com.thiago.core;
 
 import static org.testng.Assert.fail;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.Set;
 
@@ -111,24 +112,21 @@ public abstract class CorePage<T> {
 	}
 	public void aguardarElementoVisivel(WebElement element){
 		try {
-			WebDriverWait driverWait = new WebDriverWait(this.driver, LOAD_TIMEOUT);
-			driverWait.until(ExpectedConditions.visibilityOf(element));
+			new WebDriverWait(this.driver, Duration.ofSeconds(LOAD_TIMEOUT)).until(ExpectedConditions.visibilityOf(element));
 		} catch (Exception e) {
 			fail("Tempo excedido para aguardar elemento: "+element);
 		}
 	}
 	public void aguardarListElementoVisivel(List<WebElement> elements){
 		try {
-			WebDriverWait driverWait = new WebDriverWait(this.driver, LOAD_TIMEOUT);
-			driverWait.until(ExpectedConditions.visibilityOfAllElements(elements));
+			new WebDriverWait(this.driver, Duration.ofSeconds(LOAD_TIMEOUT)).until(ExpectedConditions.visibilityOfAllElements(elements));
 		} catch (Exception e) {
 			fail("Tempo excedido para aguardar elemento: "+elements);
 		}
 	}
 	public void aguardarElementoDesaparecer(By locator){
 		try {
-			WebDriverWait driverWait = new WebDriverWait(this.driver, LOAD_TIMEOUT);
-			driverWait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+			new WebDriverWait(this.driver, Duration.ofSeconds(LOAD_TIMEOUT)).until(ExpectedConditions.invisibilityOfElementLocated(locator));
 		} catch (Exception e) {
 			fail("Tempo excedido para aguardar elemento desaparecer da tela: "+locator);
 		}
@@ -136,16 +134,14 @@ public abstract class CorePage<T> {
 	
 	public void aguardarElementoVisivelComTexto(WebElement element, String text){
 		try {
-			WebDriverWait driverWait = new WebDriverWait(this.driver, LOAD_TIMEOUT);
-			driverWait.until(ExpectedConditions.textToBePresentInElement(element, text.trim()));
+			new WebDriverWait(this.driver, Duration.ofSeconds(LOAD_TIMEOUT)).until(ExpectedConditions.textToBePresentInElement(element, text.trim()));
 		} catch (Exception e) {
 			fail("Tempo excedido para aguardar elemento: "+element);
 		}
 	}
 	public void aguardarElementoClicado(WebElement element){
 		try {
-			WebDriverWait wait = new WebDriverWait(this.driver, LOAD_TIMEOUT);
-			wait.until(ExpectedConditions.elementToBeClickable(element));
+			new WebDriverWait(this.driver, Duration.ofSeconds(LOAD_TIMEOUT)).until(ExpectedConditions.elementToBeClickable(element));
 		} catch (Exception e) {
 			fail("Tempo excedido para aguardar elemento: "+element);
 		}

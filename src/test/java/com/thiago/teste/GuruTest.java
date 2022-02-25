@@ -1,5 +1,6 @@
 package com.thiago.teste;
 
+import com.thiago.page.PageGuruRegister;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -8,14 +9,20 @@ import com.thiago.page.PageGuruHome;
  
 @Listeners(InvokedMethodListener.class)
 public class GuruTest{
- 
+
     @Test
     public void loginSucesso() throws Exception {
     	new PageGuruHome()
     	.openPage(PageGuruHome.class, "http://demo.guru99.com/test/login.html")
     	.acessarLoginGuru("thiagoovcf@gmail.com", "123")
     	.validarAcessoOK();
-    	
-    	
     }
+	@Test
+	public void registroSucesso() throws Exception {
+		new PageGuruRegister()
+				.openPage(PageGuruRegister.class, "http://demo.guru99.com/test/newtours/register.php")
+				.registraPessoa("ZAIRE", "Thiago Vasconcelos", "thiago.freire")
+				.validarRegistroPessoa("Note: Your user name is thiago.freire.");
+	}
+//	http://demo.guru99.com/test/newtours/register.php
 }

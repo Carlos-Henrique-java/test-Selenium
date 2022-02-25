@@ -2,6 +2,7 @@ package com.thiago.driver;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -25,17 +26,23 @@ public class TLDriverFactory {
         } else if (browser.equals("chrome")) {
             //For Local Usage
             tlDriver.set(new ChromeDriver(optionsManager.getChromeOptions()));
-        }else if (browser.equals("grid")){
+        }else if (browser.equals("gridc")){
 			try {
-				tlDriver.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), optionsManager.getRemoteDriverChrome()));
+				tlDriver.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub/"), optionsManager.getRemoteDriverChrome()));
 			} catch (MalformedURLException e) {
 				e.printStackTrace();
 			}
+        } else if (browser.equals("gridf")){
+        try {
+            tlDriver.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub/"),optionsManager.getRemoteDriverFirefox()));
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
         }
     }
  
     public static synchronized WebDriverWait getWait (WebDriver driver) {
-        return new WebDriverWait(driver,20);
+        return new WebDriverWait(driver, Duration.ofSeconds(20));
     }
  
     public static synchronized WebDriver getDriver() {
