@@ -25,7 +25,7 @@ public abstract class Property {
 	
 	static {
 		Properties properties 					= getConfig();
-		CHROME_DRIVE_PATH 						= new File("").getAbsolutePath() + SRC_SELENIUM + "driver/windows/chromedriver.exe";
+		CHROME_DRIVE_PATH 						= new File("").getAbsolutePath() + SRC_SELENIUM + "chromedriver.exe";
 		CHROME_DRIVE_IOS_PATH 					= new File("").getAbsolutePath() + SRC_SELENIUM + "chromedriver";
 		CHROME_DRIVE_LINUX_PATH 				= new File("").getAbsolutePath() + SRC_SELENIUM + "driver/linux/chromedriver";
 		BROWSER_NAME 							= properties.getProperty("browser.name");
